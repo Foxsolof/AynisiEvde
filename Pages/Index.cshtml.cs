@@ -5,10 +5,19 @@ namespace AynısıEvde.Pages
 {
     public class IndexModel : PageModel
     {
-        public string teststr1 { get; set; }
+        public string username { get; set; } = "";
+        public List<string> videotitles { get; set; } = new();
         public void OnGet()
         {
-            teststr1 = "video title 1";
+            videotitles = new List<string>  
+            {
+                "günün çorbası",
+                "günün ana yemeği",
+                "günün aperatifi",
+                "günün tatlısı"
+            };
+            username = "misafir";   //sonradan veritabanını kontrol ederek eğer kullanıcı girişi yapılmış ise kullanıcı adını gösterilecek
+
 
         }
     }

@@ -34,7 +34,6 @@
 </style>
 <body >
     <h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:60px; text-align:center;margin-top:100px">@Model.Name</h1>
-    <h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:18px; text-align:right;margin-left:100px">@Model.User</h1>
     <div class="video-container" style="display: flex; justify-content: center; width: 100%; margin: 20px 0;margin-top:100px">
     <iframe width="560" 
             height="315" 
@@ -46,7 +45,13 @@
     ></iframe>
     
 </div>
+ <h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:18px; text-align:Center;margin-left:400px">@Model.User</h1>
+<h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:30px; text-align:Center;">@Model.Name için gerekli Malzemeler:</h1>
         <div style="max-width: 500px; margin: 0 auto; text-align: left;">
+        <h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:25px;">@Model.Ingredients<h1\>
+</div>
+<h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:30px; text-align:Center;margin-top:30px">@Model.Name Yapılışı:</h1>
+<div style="max-width: 500px; margin: 0 auto; text-align: left;">
         <h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:25px;">@Model.description<h1\>
 </div>
     </body>

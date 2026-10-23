@@ -53,48 +53,13 @@ body {
     background: rgb(230, 247, 245);
     position: relative;
 }
-html[data-bs-theme="light"] .main-container1 {
-    align-self: center;
-    width: 700px;
-    height: 1000px;
-    margin: auto;
-    margin-bottom: 100px;
-    margin-top: 50px;
-    text-align: center;
-    border: solid green 5px;
-    border-radius: 20px;
-    background: rgb(230, 247, 245);
-    position: relative;
-}
-html[data-bs-theme="dark"] .main-container1 {
-    align-self: center;
-    width: 700px;
-    height: 1000px;
-    margin: auto;
-    margin-bottom: 100px;
-    margin-top: 50px;
-    text-align: center;
-    border: solid purple 5px;
-    border-radius: 20px;
-    background: rgb(230, 247, 245);
-    position: relative;
-}
+
 .main-textstyle1 {
     font-size: 22px;
     font-family: Algerian;
     color: crimson;
 }
-html[data-bs-theme="dark"]
-.main-textstyle1 {
-    font-size: 22px;
-    font-family: Algerian;
-    color: crimson;
-}
-html[data-bs-theme="light"]
-.main-textstyle1 {
-    font-size: 22px;
-    font-family: Algerian;
-    color: darkred;
+ darkred;
 }
 .main-video-container-small {
     background-image: radial-gradient(rgb(98, 233, 229),rgb(162, 190, 140));
@@ -107,6 +72,63 @@ html[data-bs-theme="light"]
     border-inline-color: rgb(176, 180, 132);
     border-block-color: rgb(150, 200, 165);
 }
+
+
+
+
+html[data-bs-theme="dark"]
+.main-textstyle1 {
+    font-size: 22px;
+    font-family: Algerian;
+    color: crimson;
+}
+
+html[data-bs-theme="light"]
+.main-textstyle1 {
+    font-size: 22px;
+    font-family: Algerian;
+    color: darkred;
+}
+
+html[data-bs-theme="dark"]
+.main-textstyle1 {
+    font-size: 22px;
+    font-family: Algerian;
+    color: crimson;
+}
+
+html[data-bs-theme="light"]
+.main-textstyle1 {
+    font-size: 22px;
+    font-family: Algerian;
+    color: html[data-bs-theme="light"] .main-container1 {
+    align-self: center;
+    width: 700px;
+    height: 1000px;
+    margin: auto;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    text-align: center;
+    border: solid green 5px;
+    border-radius: 20px;
+    background: rgb(230, 247, 245);
+    position: relative;
+}
+
+html[data-bs-theme="dark"] .main-container1 {
+    align-self: center;
+    width: 700px;
+    height: 1000px;
+    margin: auto;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    text-align: center;
+    border: solid purple 5px;
+    border-radius: 20px;
+    background: rgb(0, 0, 0);
+    position: relative;
+}
+
 html[data-bs-theme="light"] .main-video-container-small {
     background-image: radial-gradient(rgb(98, 233, 229),rgb(162, 190, 140));
     height: 460px;

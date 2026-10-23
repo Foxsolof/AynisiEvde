@@ -42,7 +42,7 @@ body {
 }
 .main-container1 {
     align-self: center;
-    width: 600px;
+    width: 700px;
     height: 1000px;
     margin:auto;
     margin-bottom:100px;
@@ -55,7 +55,13 @@ body {
 }
 .main-textstyle1{
    font-size: 22px;
-   font-family:Arial;
+   font-family:Algerian;
    color:crimson;
-
+}
+.main-video-container-small {
+    height: 460px;
+    width: 660px;   
+    margin:auto;
+    border:solid 1px black;
+    border-radius:10px;
 }

@@ -59,8 +59,7 @@ body {
     font-family: Algerian;
     color: crimson;
 }
- darkred;
-}
+
 .main-video-container-small {
     background-image: radial-gradient(rgb(98, 233, 229),rgb(162, 190, 140));
     height: 460px;
@@ -76,32 +75,8 @@ body {
 
 
 
-html[data-bs-theme="dark"]
-.main-textstyle1 {
-    font-size: 22px;
-    font-family: Algerian;
-    color: crimson;
-}
 
-html[data-bs-theme="light"]
-.main-textstyle1 {
-    font-size: 22px;
-    font-family: Algerian;
-    color: darkred;
-}
-
-html[data-bs-theme="dark"]
-.main-textstyle1 {
-    font-size: 22px;
-    font-family: Algerian;
-    color: crimson;
-}
-
-html[data-bs-theme="light"]
-.main-textstyle1 {
-    font-size: 22px;
-    font-family: Algerian;
-    color: html[data-bs-theme="light"] .main-container1 {
+html[data-bs-theme="light"] .main-container1 {
     align-self: center;
     width: 700px;
     height: 1000px;
@@ -127,6 +102,20 @@ html[data-bs-theme="dark"] .main-container1 {
     border-radius: 20px;
     background: rgb(0, 0, 0);
     position: relative;
+}
+
+html[data-bs-theme="dark"]
+.main-textstyle1 {
+    font-size: 22px;
+    font-family: Algerian;
+    color: crimson;
+}
+
+html[data-bs-theme="light"]
+.main-textstyle1 {
+    font-size: 22px;
+    font-family: Algerian;
+    color: darkred;
 }
 
 html[data-bs-theme="light"] .main-video-container-small {

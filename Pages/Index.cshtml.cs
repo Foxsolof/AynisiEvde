@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AynısıEvde.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel : BaseButtonedPageModel
     {
         public string username { get; set; } = "";
         public List<string> videotitles { get; set; } = new();

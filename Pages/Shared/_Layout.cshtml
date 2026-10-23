@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+﻿@{
+    var currentTheme = Context.Request.Cookies["theme"] ?? "light";
+}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="@currentTheme">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,6 +33,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy/GİZLİ</a>
                         </li>
                     </ul>
+                    <form method="post" asp-page-handler="ToggleTheme" style="margin:0;">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">
+                            @(currentTheme == "light" ? "☀️ Aydınlık Mod" : "🌙 Karanlık Mod")
+                        </button>
+                    </form>
                 </div>
             </div>
         </nav>

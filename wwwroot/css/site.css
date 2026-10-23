@@ -46,9 +46,16 @@ body {
     height: 1000px;
     margin:auto;
     margin-bottom:100px;
+    margin-top:50px;
     text-align: center;
     border: solid green 5px;
     border-radius: 20px;
     background:white;
     
+}
+.main-textstyle1{
+   font-size: 22px;
+   font-family:Arial;
+   color:crimson;
+
 }

@@ -119,7 +119,7 @@ html[data-bs-theme="light"] .main-video-container-small {
     border-block-color: rgb(150, 200, 165);
 }
 html[data-bs-theme="dark"] .main-video-container-small {
-    background-image: radial-gradient(rgb(98, 233, 229),rgb(162, 190, 140));
+    background-image: radial-gradient(rgb(161, 0, 209),rgb(73, 3, 94));
     height: 460px;
     width: 660px;
     margin: auto;

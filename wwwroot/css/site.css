@@ -35,7 +35,20 @@ body {
     background-attachment:fixed;
     background-position:center;
     background-repeat:no-repeat;
-    background-size:initial;
-    text-align:left;
+    background-size:cover;
+    align-items:center;
+    align-content:center;
 
+}
+.main-container1 {
+    align-self: center;
+    width: 600px;
+    height: 1000px;
+    margin:auto;
+    margin-bottom:100px;
+    text-align: center;
+    border: solid green 5px;
+    border-radius: 20px;
+    background:white;
+    
 }

@@ -9,6 +9,7 @@ namespace AynısıEvde.Pages
         public void OnGet()
         {
             teststr1 = "video title 1";
+
         }
     }
 }

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using AynısıEvde.data;
 using AynısıEvde.model;
+using Microsoft.EntityFrameworkCore;
 
 namespace AynısıEvde.Pages
 {
@@ -12,8 +13,14 @@ namespace AynısıEvde.Pages
         public string Ingredients { get; set; } = "";
         public string description = "";
         private readonly testdatabase db;
+        public recipe_list rec;
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            var rec = await db.recipe_List.FirstAsync(m => m.recipe_id == id);
+            if(rec is null)
+            {
+                //return NotFound();
+            }
             string emote = " \U0001f962 ";
             string currentTheme = Request.Cookies["theme"] ?? "light";
             if (currentTheme != "light")

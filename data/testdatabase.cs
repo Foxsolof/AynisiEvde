@@ -22,7 +22,7 @@ namespace AynısıEvde.data
                 modelBuilder.Entity<recipe_ingredient_list>().HasKey(tm => new { tm.recipe_id, tm.ingredient_id });
                 modelBuilder.Entity<recipe_category_list>().HasKey(tm => new { tm.recipe_id, tm.category_id });
                 modelBuilder.Entity<favourites_list>().HasKey(tm => new { tm.user_id, tm.recipe_id });
-                modelBuilder.Entity<user_ingredient_list>().HasKey(tm => new { tm.user_id, tm.ingredient_id });   
+                modelBuilder.Entity<user_ingredient_list>().HasKey(tm => new { tm.user_id, tm.ingredient_id });
             //birimi sınırlamak için
                 modelBuilder.Entity<ingredient_list>().ToTable(t => t.HasCheckConstraint("CK_ingredient_unit","ingredient_unit IN ('Litre','mililitre','Adet','gram','kilogram')"));
 

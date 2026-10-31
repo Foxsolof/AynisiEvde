@@ -11,7 +11,7 @@ namespace AynısıEvde.model
         [Required(ErrorMessage = "Malzeme adı zorunludur.")]
         [StringLength(100)]
         public string ingredient_name { get; set; }
-        [Required(ErrorMessage = "Malzeme birimi zoırunludur")]
+        [Required(ErrorMessage = "Malzeme birimi zorunludur")]
         [StringLength(100)]
         public string ingredient_unit { get; set; }
         public ICollection<recipe_ingredient_list> TarifMalzemeleri { get; set; }

@@ -18,6 +18,8 @@ namespace AynısıEvde.model
         [StringLength(3000)]
         public string recipe { get; set;}
 
+        public string recipe_video { get; set; }
+
         public int? user_id { get; set; } //user id
 
         public bool approval { get; set; } = false;

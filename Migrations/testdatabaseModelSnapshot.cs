@@ -21,6 +21,71 @@ namespace AynısıEvde.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AynısıEvde.model.category_list", b =>
+                {
+                    b.Property<int>("category_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("category_id"));
+
+                    b.Property<string>("category_name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("category_id");
+
+                    b.HasIndex("category_name")
+                        .IsUnique();
+
+                    b.ToTable("kategoriler");
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.favourites_list", b =>
+                {
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("recipe_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("user_id", "recipe_id");
+
+                    b.HasIndex("recipe_id");
+
+                    b.ToTable("favoriler");
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.ingredient_list", b =>
+                {
+                    b.Property<int>("ingredient_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ingredient_id"));
+
+                    b.Property<string>("ingredient_name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ingredient_unit")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("ingredient_id");
+
+                    b.HasIndex("ingredient_name")
+                        .IsUnique();
+
+                    b.ToTable("malzemeler", t =>
+                        {
+                            t.HasCheckConstraint("CK_ingredient_unit", "ingredient_unit IN ('Litre','mililitre','Adet','gram','kilogram')");
+                        });
+                });
+
             modelBuilder.Entity("AynısıEvde.model.kullanıcı", b =>
                 {
                     b.Property<int>("user_id")
@@ -31,7 +96,7 @@ namespace AynısıEvde.Migrations
 
                     b.Property<string>("email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("password")
                         .IsRequired()
@@ -45,10 +110,47 @@ namespace AynısıEvde.Migrations
 
                     b.HasKey("user_id");
 
+                    b.HasIndex("email")
+                        .IsUnique();
+
                     b.HasIndex("username")
                         .IsUnique();
 
                     b.ToTable("kullanıcılar");
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.recipe_category_list", b =>
+                {
+                    b.Property<int>("recipe_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("category_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("recipe_id", "category_id");
+
+                    b.HasIndex("category_id");
+
+                    b.ToTable("recipe_category_list");
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.recipe_ingredient_list", b =>
+                {
+                    b.Property<int>("recipe_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ingredient_id")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("amount")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("recipe_id", "ingredient_id");
+
+                    b.HasIndex("ingredient_id");
+
+                    b.ToTable("recipe_Ingredient_List");
                 });
 
             modelBuilder.Entity("AynısıEvde.model.recipe_list", b =>
@@ -64,7 +166,8 @@ namespace AynısıEvde.Migrations
 
                     b.Property<string>("recipe")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(3000)
+                        .HasColumnType("nvarchar(3000)");
 
                     b.Property<string>("recipe_name")
                         .IsRequired()
@@ -82,24 +185,105 @@ namespace AynısıEvde.Migrations
                     b.HasIndex("user_id");
 
                     b.ToTable("recipe_List");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            recipe_id = 1,
-                            approval = false,
-                            recipe = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz",
-                            recipe_name = "Doner"
-                        });
+            modelBuilder.Entity("AynısıEvde.model.user_ingredient_list", b =>
+                {
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ingredient_id")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("amount")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("user_id", "ingredient_id");
+
+                    b.HasIndex("ingredient_id");
+
+                    b.ToTable("kullaniciMalzemeleri");
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.favourites_list", b =>
+                {
+                    b.HasOne("AynısıEvde.model.recipe_list", null)
+                        .WithMany()
+                        .HasForeignKey("recipe_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AynısıEvde.model.kullanıcı", null)
+                        .WithMany()
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.recipe_category_list", b =>
+                {
+                    b.HasOne("AynısıEvde.model.category_list", "category")
+                        .WithMany()
+                        .HasForeignKey("category_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AynısıEvde.model.recipe_list", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("recipe_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
+
+                    b.Navigation("category");
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.recipe_ingredient_list", b =>
+                {
+                    b.HasOne("AynısıEvde.model.ingredient_list", "ingredient")
+                        .WithMany("TarifMalzemeleri")
+                        .HasForeignKey("ingredient_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AynısıEvde.model.recipe_list", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("recipe_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
+
+                    b.Navigation("ingredient");
                 });
 
             modelBuilder.Entity("AynısıEvde.model.recipe_list", b =>
                 {
-                    b.HasOne("AynısıEvde.model.kullanıcı", "User")
+                    b.HasOne("AynısıEvde.model.kullanıcı", null)
                         .WithMany()
                         .HasForeignKey("user_id");
+                });
 
-                    b.Navigation("User");
+            modelBuilder.Entity("AynısıEvde.model.user_ingredient_list", b =>
+                {
+                    b.HasOne("AynısıEvde.model.ingredient_list", null)
+                        .WithMany()
+                        .HasForeignKey("ingredient_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AynısıEvde.model.kullanıcı", null)
+                        .WithMany()
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AynısıEvde.model.ingredient_list", b =>
+                {
+                    b.Navigation("TarifMalzemeleri");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,18 +7,18 @@ namespace AynısıEvde.model
     [Index(nameof(recipe_name), IsUnique = true)]
     public class recipe_list
     {
-        [Required(ErrorMessage = "tarif adı zorunludur.")]
-        [StringLength(100)]
-        public string recipe_name { get; set;}
         [Key]
         public int recipe_id { get; set; }
 
+        [Required(ErrorMessage = "tarif adı zorunludur.")]
+        [StringLength(100)]
+        public string recipe_name { get; set;}
+
         [Required(ErrorMessage ="tarif yapılışı zorunludur.")]
+        [StringLength(3000)]
         public string recipe { get; set;}
 
         public int? user_id { get; set; } //user id
-        [ForeignKey(nameof(user_id))]
-        public kullanıcı? User { get; set; }
 
         public bool approval { get; set; } = false;
     }

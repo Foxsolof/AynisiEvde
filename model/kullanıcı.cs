@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace AynısıEvde.model
 {
     [Index(nameof(username), IsUnique = true)]
+    [Index(nameof(email), IsUnique = true)]
     public class kullanıcı
     {
         [Key]

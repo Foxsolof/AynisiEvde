@@ -84,6 +84,32 @@ namespace AynısıEvde.Migrations
                         {
                             t.HasCheckConstraint("CK_ingredient_unit", "ingredient_unit IN ('Litre','mililitre','Adet','gram','kilogram')");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            ingredient_id = 1,
+                            ingredient_name = "Mavi Kula",
+                            ingredient_unit = "Litre"
+                        },
+                        new
+                        {
+                            ingredient_id = 2,
+                            ingredient_name = "Meybuz",
+                            ingredient_unit = "Adet"
+                        },
+                        new
+                        {
+                            ingredient_id = 3,
+                            ingredient_name = "Hamur",
+                            ingredient_unit = "Adet"
+                        },
+                        new
+                        {
+                            ingredient_id = 4,
+                            ingredient_name = "Kıyma",
+                            ingredient_unit = "gram"
+                        });
                 });
 
             modelBuilder.Entity("AynısıEvde.model.kullanıcı", b =>
@@ -151,6 +177,38 @@ namespace AynısıEvde.Migrations
                     b.HasIndex("ingredient_id");
 
                     b.ToTable("recipe_Ingredient_List");
+
+                    b.HasData(
+                        new
+                        {
+                            recipe_id = 1,
+                            ingredient_id = 1,
+                            amount = 10m
+                        },
+                        new
+                        {
+                            recipe_id = 1,
+                            ingredient_id = 2,
+                            amount = 3m
+                        },
+                        new
+                        {
+                            recipe_id = 2,
+                            ingredient_id = 3,
+                            amount = 3m
+                        },
+                        new
+                        {
+                            recipe_id = 2,
+                            ingredient_id = 4,
+                            amount = 750m
+                        },
+                        new
+                        {
+                            recipe_id = 3,
+                            ingredient_id = 4,
+                            amount = 750m
+                        });
                 });
 
             modelBuilder.Entity("AynısıEvde.model.recipe_list", b =>
@@ -198,6 +256,22 @@ namespace AynısıEvde.Migrations
                             recipe = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz",
                             recipe_name = "Doner",
                             recipe_video = "https://youtube.com/embed/438dcMfDbBw?si=d-A0darJ2C9HkCq1"
+                        },
+                        new
+                        {
+                            recipe_id = 2,
+                            approval = false,
+                            recipe = "Hamura et at\r\npişir",
+                            recipe_name = "Lahmacun",
+                            recipe_video = "https://www.youtube.com/embed/_9zd7EbnBV4"
+                        },
+                        new
+                        {
+                            recipe_id = 3,
+                            approval = false,
+                            recipe = "Eti zırhla sonra pişir.",
+                            recipe_name = "Adana Kebap",
+                            recipe_video = "https://www.youtube.com/embed/PnRIfYSLQ2U"
                         });
                 });
 

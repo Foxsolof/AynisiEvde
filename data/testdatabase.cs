@@ -58,7 +58,7 @@ namespace AynısıEvde.data
             modelBuilder.Entity<recipe_list>().HasData(
        new recipe_list { recipe_name = "Doner", recipe_id = 1, recipe_video = "https://youtube.com/embed/438dcMfDbBw?si=d-A0darJ2C9HkCq1", recipe = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz" },
        new recipe_list { recipe_name = "Lahmacun", recipe_id = 2, recipe_video = "https://www.youtube.com/embed/_9zd7EbnBV4", recipe = "Hamura et at\r\npişir" },
-       new recipe_list { recipe_name = "Lahmacun", recipe_id = 2, recipe_video = "https://www.youtube.com/embed/PnRIfYSLQ2U", recipe = "Eti zırhla sonra pişir." }
+       new recipe_list { recipe_name = "Adana Kebap", recipe_id = 3, recipe_video = "https://www.youtube.com/embed/PnRIfYSLQ2U", recipe = "Eti zırhla sonra pişir." }
 
        );
             modelBuilder.Entity<ingredient_list>().HasData(

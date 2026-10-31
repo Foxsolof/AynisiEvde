@@ -174,6 +174,10 @@ namespace AynısıEvde.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("recipe_video")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("user_id")
                         .HasColumnType("int");
 
@@ -185,6 +189,16 @@ namespace AynısıEvde.Migrations
                     b.HasIndex("user_id");
 
                     b.ToTable("recipe_List");
+
+                    b.HasData(
+                        new
+                        {
+                            recipe_id = 1,
+                            approval = false,
+                            recipe = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz",
+                            recipe_name = "Doner",
+                            recipe_video = "https://youtube.com/embed/438dcMfDbBw?si=d-A0darJ2C9HkCq1"
+                        });
                 });
 
             modelBuilder.Entity("AynısıEvde.model.user_ingredient_list", b =>

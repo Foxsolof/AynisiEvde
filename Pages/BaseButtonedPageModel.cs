@@ -5,7 +5,7 @@ namespace AynısıEvde.Pages
 {
     public class BaseButtonedPageModel:PageModel
     {
-        public IActionResult OnPostToggleTheme()
+        public IActionResult OnPostToggleTheme(int? id)
         {
 
             string currentTheme = Request.Cookies["theme"] ?? "light";
@@ -22,7 +22,10 @@ namespace AynısıEvde.Pages
                 Secure = false
             };
             Response.Cookies.Append("theme", newTheme, options);
-
+            if (id.HasValue)
+            {
+                return RedirectToPage(new { id=id});
+            }
 
             return RedirectToPage();
         }

@@ -37,9 +37,16 @@
                         </li>
                     </ul>
                     <form method="post" asp-page-handler="ToggleTheme" style="margin:0;">
+                        <input type="hidden" name="id" id="currentRecipeId" value="" />
                         <button type="submit" class="btn btn-outline-secondary btn-sm">
                             @(currentTheme == "light" ? "☀️ Aydınlık Mod" : "🌙 Karanlık Mod")
                         </button>
+                    </form>
+                    <form method="get" asp-page="./FoodBlueprint">
+                        <div class="input-group">
+                            <input type="number" name="id" class="form-control" placeholder="Yemek ID girin!(1,2..)" />
+                            <button type="submit" class="btn btn-primary">Git</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -60,7 +67,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script>
+                const urlParams = new URLSearchParams(window.location.search);
+            const recipeId = urlParams.get('id');
+            if (recipeId) {
+                document.getElementById('currentRecipeId').value = recipeId;
+            }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -12,8 +12,10 @@ namespace AynısıEvde.Pages
         public string User { get; set; } = "";
         public string Ingredients { get; set; } = "";
         public string description = "";
+        public string videourl = "";
         private readonly testdatabase db;
         public recipe_list rec;
+        public List<ingredient_list> ing;
         public FoodBlueprintModel(testdatabase _db)
         {
             db = _db;
@@ -22,19 +24,37 @@ namespace AynısıEvde.Pages
         {
             int targetid = id ?? 1;
             var rec = await db.recipe_List.FirstOrDefaultAsync(m => m.recipe_id == targetid);
-            if(rec is null)
+            var ing = await db.recipe_Ingredient_List.Include(x => x.ingredient)
+    .Where(x => x.recipe_id == targetid)
+    .ToListAsync(); 
+            if (rec is null)
             {
                 return NotFound();
             }
+            videourl = rec.recipe_video;
             string emote = " \U0001f962 ";
             string currentTheme = Request.Cookies["theme"] ?? "light";
             if (currentTheme != "light")
             {
                 emote = "🍽";
             }
-            Name = "Doner";
+            emote = emote + " ";
+            //Name = "Doner";
+            Name = rec.recipe_name;
             User = "Ali Efe SONMEZ!";
-            Ingredients = "10 tane mavi kola \n 20 tane meybuz\n 1 döner ustası\nBir tutam da bilim";
+            //Ingredients = "10 tane mavi kola \n 20 tane meybuz\n 1 döner ustası\nBir tutam da bilim";
+            if (ing.Count > 0)
+            {
+                Ingredients = ing[0] .amount+" "+ ing[0].ingredient?.ingredient_unit+" "+ ing[0].ingredient?.ingredient_name;
+                for (int i = 1; i < ing.Count; i++)
+                {
+                    Ingredients += "\n"+ ing[i].amount + " " + ing[i].ingredient?.ingredient_unit + " " + ing[i].ingredient?.ingredient_name;
+                }
+            }
+            else
+            {
+                Ingredients = "Malzemeleri kendiniz anlayın";
+            }
             string new_ing = emote;
             for (int i = 0; i < Ingredients.Length; i++)
             {

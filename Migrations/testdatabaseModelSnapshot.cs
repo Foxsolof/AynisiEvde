@@ -82,6 +82,15 @@ namespace AynısıEvde.Migrations
                     b.HasIndex("user_id");
 
                     b.ToTable("recipe_List");
+
+                    b.HasData(
+                        new
+                        {
+                            recipe_id = 1,
+                            approval = false,
+                            recipe = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz",
+                            recipe_name = "Doner"
+                        });
                 });
 
             modelBuilder.Entity("AynısıEvde.model.recipe_list", b =>

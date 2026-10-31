@@ -14,12 +14,17 @@ namespace AynısıEvde.Pages
         public string description = "";
         private readonly testdatabase db;
         public recipe_list rec;
+        public FoodBlueprintModel(testdatabase _db)
+        {
+            db = _db;
+        }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            var rec = await db.recipe_List.FirstAsync(m => m.recipe_id == id);
+            int targetid = id ?? 1;
+            var rec = await db.recipe_List.FirstOrDefaultAsync(m => m.recipe_id == targetid);
             if(rec is null)
             {
-                //return NotFound();
+                return NotFound();
             }
             string emote = " \U0001f962 ";
             string currentTheme = Request.Cookies["theme"] ?? "light";
@@ -40,7 +45,8 @@ namespace AynısıEvde.Pages
                 }
             }
             Ingredients = new_ing;
-            description = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz";
+            description = rec.recipe;
+            //description = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz";
             string new_desc = "1. ";
             int count = 1;
             for (int i = 0; i < description.Length; i++)

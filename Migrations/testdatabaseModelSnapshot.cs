@@ -142,7 +142,7 @@ namespace AynısıEvde.Migrations
                     b.HasIndex("username")
                         .IsUnique();
 
-                    b.ToTable("kullanıcılar");
+                    b.ToTable("user_data_table");
                 });
 
             modelBuilder.Entity("AynısıEvde.model.recipe_category_list", b =>
@@ -246,7 +246,7 @@ namespace AynısıEvde.Migrations
 
                     b.HasIndex("user_id");
 
-                    b.ToTable("recipe_List");
+                    b.ToTable("recipes_table");
 
                     b.HasData(
                         new

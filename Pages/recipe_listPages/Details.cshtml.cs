@@ -23,7 +23,7 @@ public class DetailsModel : PageModel
             return NotFound();
         }
 
-        var recipe_list = await _context.recipe_List.FirstOrDefaultAsync(m => m.recipe_id == recipe_id);
+        var recipe_list = await _context.recipes_table.FirstOrDefaultAsync(m => m.recipe_id == recipe_id);
         if (recipe_list is null)
         {
             return NotFound();

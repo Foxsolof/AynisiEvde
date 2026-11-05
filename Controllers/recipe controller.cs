@@ -17,7 +17,7 @@ namespace AynısıEvde.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRecipes()
         {
-            var recipes = await access_point.recipe_List.Select(r => new
+            var recipes = await access_point.recipes_table.Select(r => new
             {
                 r.recipe_id,
                 r.recipe_name,

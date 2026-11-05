@@ -25,7 +25,7 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var recipe_list = await _context.recipe_List.FirstOrDefaultAsync(m => m.recipe_id == recipe_id);
+        var recipe_list = await _context.recipes_table.FirstOrDefaultAsync(m => m.recipe_id == recipe_id);
         if (recipe_list is null)
         {
             return NotFound();
@@ -45,11 +45,11 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var recipe_list = await _context.recipe_List.FindAsync(recipe_id);
+        var recipe_list = await _context.recipes_table.FindAsync(recipe_id);
         if (recipe_list != null)
         {
             Recipe_list = recipe_list;
-            _context.recipe_List.Remove(Recipe_list);
+            _context.recipes_table.Remove(Recipe_list);
             await _context.SaveChangesAsync();
         }
 

@@ -23,7 +23,7 @@ namespace AynısıEvde.Pages
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             int targetid = id ?? 1;
-            var rec = await db.recipe_List.FirstOrDefaultAsync(m => m.recipe_id == targetid);
+            var rec = await db.recipes_table.FirstOrDefaultAsync(m => m.recipe_id == targetid);
             var ing = await db.recipe_Ingredient_List.Include(x => x.ingredient)
     .Where(x => x.recipe_id == targetid)
     .ToListAsync(); 

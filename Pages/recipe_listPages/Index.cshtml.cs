@@ -19,6 +19,6 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        Recipe_list = await _context.recipe_List.ToListAsync();
+        Recipe_list = await _context.recipes_table.ToListAsync();
     }
 }

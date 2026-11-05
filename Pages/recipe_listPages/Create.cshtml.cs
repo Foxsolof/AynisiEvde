@@ -31,7 +31,7 @@ public class CreateModel : PageModel
             return Page();
         }
 
-        _context.recipe_List.Add(Recipe_list);
+        _context.recipes_table.Add(Recipe_list);
         await _context.SaveChangesAsync();
 
         return RedirectToPage("./Index");

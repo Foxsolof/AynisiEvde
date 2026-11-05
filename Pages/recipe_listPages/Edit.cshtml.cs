@@ -25,7 +25,7 @@ public class EditModel : PageModel
             return NotFound();
         }
 
-        var recipe_list = await _context.recipe_List.FirstOrDefaultAsync(m => m.recipe_id == recipe_id);
+        var recipe_list = await _context.recipes_table.FirstOrDefaultAsync(m => m.recipe_id == recipe_id);
         if (recipe_list is null)
         {
             return NotFound();
@@ -66,6 +66,6 @@ public class EditModel : PageModel
 
     private bool recipe_listExists(int recipe_id)
     {
-        return _context.recipe_List.Any(e => e.recipe_id == recipe_id);
+        return _context.recipes_table.Any(e => e.recipe_id == recipe_id);
     }
 }

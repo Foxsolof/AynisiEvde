@@ -6,7 +6,7 @@ using AynısıEvde.data;
 
 namespace AynısıEvde.Pages.recipe_listPages;
 
-public class IndexModel : PageModel
+public class IndexModel : BaseButtonedPageModel
 {
     private readonly testdatabase _context;
 
@@ -21,4 +21,5 @@ public class IndexModel : PageModel
     {
         Recipe_list = await _context.recipes_table.ToListAsync();
     }
+    
 }

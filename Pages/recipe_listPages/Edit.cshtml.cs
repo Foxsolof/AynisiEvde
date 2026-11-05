@@ -6,7 +6,7 @@ using AynısıEvde.data;
 
 namespace AynısıEvde.Pages.recipe_listPages;
 
-public class EditModel : PageModel
+public class EditModel : BaseButtonedPageModel
 {
     private readonly testdatabase _context;
 
@@ -18,8 +18,9 @@ public class EditModel : PageModel
     [BindProperty]
     public recipe_list Recipe_list { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(int? recipe_id)
+    public async Task<IActionResult> OnGetAsync(int? id)
     {
+        int? recipe_id = id;
         if (recipe_id is null)
         {
             return NotFound();

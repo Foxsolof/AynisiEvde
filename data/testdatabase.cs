@@ -10,8 +10,8 @@ namespace AynısıEvde.data
         {
         }
 
-        public DbSet<kullanıcı> kullanıcılar { get; set; } = default!;
-        public DbSet<recipe_list> recipe_List { get; set; } = default!;
+        public DbSet<kullanıcı> user_data_table { get; set; } = default!;
+        public DbSet<recipe_list> recipes_table { get; set; } = default!;
         public DbSet<recipe_ingredient_list> recipe_Ingredient_List { get; set; } = default!;
         public DbSet<recipe_category_list> recipe_category_list { get; set; } = default!;
         
@@ -55,6 +55,8 @@ namespace AynısıEvde.data
             //amount precision ayarı
             modelBuilder.Entity<recipe_ingredient_list>().Property(r => r.amount).HasPrecision(10, 2);
             modelBuilder.Entity<user_ingredient_list>().Property(u => u.amount).HasPrecision(10, 2);
+
+
             modelBuilder.Entity<recipe_list>().HasData(
        new recipe_list { recipe_name = "Doner", recipe_id = 1, recipe_video = "https://youtube.com/embed/438dcMfDbBw?si=d-A0darJ2C9HkCq1", recipe = "10 mavi kolayı iyice çalkalayın\nİçine azar azar meybuz eklemesi için döner ustasını kullanın\n20. Meybuzu da koyduktan sonra yeterince bilim varsa\nAfiyetle yiyebilirsiniz" },
        new recipe_list { recipe_name = "Lahmacun", recipe_id = 2, recipe_video = "https://www.youtube.com/embed/_9zd7EbnBV4", recipe = "Hamura et at\r\npişir" },

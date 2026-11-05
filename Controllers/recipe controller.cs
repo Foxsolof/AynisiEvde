@@ -22,9 +22,7 @@ namespace AynısıEvde.Controllers
                 r.recipe_id,
                 r.recipe_name,
                 r.recipe,
-
-                ingredients = access_point.recipe_Ingredient_List
-                .Where(i => i.recipe_id == r.recipe_id)
+                ingredients = access_point.recipe_Ingredient_List.Where(i => i.recipe_id == r.recipe_id)
                 .Select(i => new
                 {
                     name = i.ingredient!.ingredient_name,

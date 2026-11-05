@@ -41,7 +41,34 @@
                 @Html.DisplayFor(model => item.recipe)
             </td>
             <td>
-                @Html.DisplayFor(model => item.recipe_video)
+                @if (!string.IsNullOrEmpty(item.recipe_video))
+{
+    
+    var videoUrl = item.recipe_video;
+    var videoId = videoUrl.Contains("v=") 
+        ? videoUrl.Split("v=")[1].Split("&")[0] 
+        : videoUrl.Split("/").Last();
+    var maxResUrl = $"https://img.youtube.com/vi/{videoId}/maxresdefault.jpg";
+    var hqUrl = $"https://img.youtube.com/vi/{videoId}/hqdefault.jpg";
+
+    <div class="my-2" style="max-width: 400px;">
+        <a href="@item.recipe_video" target="_blank" title="Videoyu Youtube'de izlemek için tıklayınız">
+            <picture>
+                
+                <source srcset="@maxResUrl" media="(min-width: 1px)">
+                
+                <img src="@hqUrl" 
+                     alt="Tarif Video Kapağı" 
+                     class="img-fluid rounded shadow-sm" />
+                  
+            </picture>
+        </a>
+    </div>
+}
+else
+{
+    <span class="text-muted">Video eklenmemiş</span>
+}
             </td>
             <td>
                 @Html.DisplayFor(model => item.user_id)

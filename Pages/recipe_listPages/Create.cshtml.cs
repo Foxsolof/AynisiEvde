@@ -6,7 +6,7 @@ using AynısıEvde.data;
 
 namespace AynısıEvde.Pages.recipe_listPages;
 
-public class CreateModel : PageModel
+public class CreateModel : BaseButtonedPageModel
 {
     private readonly testdatabase _context;
 

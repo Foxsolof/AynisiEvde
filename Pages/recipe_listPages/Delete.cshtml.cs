@@ -39,14 +39,14 @@ public class DeleteModel : BaseButtonedPageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(int? recipe_id)
+    public async Task<IActionResult> OnPostAsync(int? id)
     {
-        if (recipe_id is null)
+        if (id is null)
         {
             return NotFound();
         }
 
-        var recipe_list = await _context.recipes_table.FindAsync(recipe_id);
+        var recipe_list = await _context.recipes_table.FindAsync(id);
         if (recipe_list != null)
         {
             Recipe_list = recipe_list;

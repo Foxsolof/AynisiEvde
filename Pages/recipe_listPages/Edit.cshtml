@@ -5,9 +5,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>recipe_list</h4>
+<body class="main-body1">
+<div style="background-color:lightgray;border-radius:10px;padding:4px ">
+<h4>edit recipe</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -51,6 +51,8 @@
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>
+</div>
+</body>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

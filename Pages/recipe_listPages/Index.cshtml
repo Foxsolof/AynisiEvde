@@ -4,12 +4,11 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class="main-body1">
 
-<h1>Index</h1>
-
-<p>
+    <div style="height:30px;width:100px;background-color:rgb(150, 200, 165);border:solid black 1px;margin-bottom:20px;text-align:center;border-radius:5px">
     <a asp-page="Create">Create New</a>
-</p>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +44,18 @@
 {
     
     var videoUrl = item.recipe_video;
-    var videoId = videoUrl.Split("/embed/")[1].Split("?")[0].Split("&")[0];
+    var videoId = videoUrl;
+    // url hatalı ise normalde sayfa hata veriyordu, şimdilik try catch ile düzelttim, rica ederim Ali KARAKAYA
+    try{
+        videoId = videoUrl.Split("/embed/")[1].Split("?")[0].Split("&")[0];
+    }
+    catch{
+
+    }
+    finally{
+
+    }
+
     var maxResUrl = $"https://img.youtube.com/vi/{videoId}/maxresdefault.jpg";
     var hqUrl = $"https://img.youtube.com/vi/{videoId}/hqdefault.jpg";
 
@@ -83,3 +93,4 @@ else
 }
     </tbody>
 </table>
+</body>

@@ -41,6 +41,7 @@ namespace AynısıEvde.Controllers
             {
                 recipe_name = request.recipe_name,
                 recipe = request.recipe,
+                recipe_video = request.recipe_video??"",
                 approval = false
             };
 

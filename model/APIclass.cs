@@ -4,6 +4,7 @@
     {
         public string recipe_name { get; set; } = "";
         public string recipe { get; set; } = "";
+        public string recipe_video { get; set; } = "";
         public List<IngredientRequest> ingredients { get; set; } = new();
     }
 

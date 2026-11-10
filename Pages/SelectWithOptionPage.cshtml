@@ -1,0 +1,93 @@
+﻿@page
+@model AynısıEvde.Pages.SelectWithOptionPageModel
+@{
+    ViewData["Title"] = "Select";
+}
+
+<h1>Index</h1>
+
+
+<form method="get" class="row g-2 mb-4">
+    <div class="col-md-4">
+        <select asp-for="Selected" class="form-select">
+            <option value="">-- Tüm Malzemeler --</option>
+            @foreach (var ing in Model.ing_list)
+            {
+                <option value="@ing.ingredient_id">@ing.ingredient_name</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-auto">
+        <button type="submit" class="btn btn-success">Ara</button>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_list[0].recipe_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_list[0].recipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_list[0].recipe_video)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe_list[0].user_id)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Recipe_list)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.recipe_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.recipe)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.recipe_video))
+                    {
+
+                        var videoUrl = item.recipe_video;
+                        var videoId = videoUrl.Split("/embed/")[1].Split("?")[0].Split("&")[0];
+                        var maxResUrl = $"https://img.youtube.com/vi/{videoId}/maxresdefault.jpg";
+                        var hqUrl = $"https://img.youtube.com/vi/{videoId}/hqdefault.jpg";
+
+                        <div class="my-2" style="max-width: 400px;">
+                            <a href="@item.recipe_video" target="_blank" title="Videoyu Youtube'de izlemek için tıklayınız">
+                                <picture>
+
+                                    <source srcset="@maxResUrl" media="(min-width: 1px)">
+
+                                    <img src="@hqUrl"
+                                         alt="Tarif Video Kapağı"
+                                         class="img-fluid rounded shadow-sm" />
+
+                                </picture>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Video eklenmemiş</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.user_id)
+                </td>
+                
+                <td>
+                   
+                    <a asp-page="./Details" asp-route-id="@item.recipe_id">Details</a> 
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

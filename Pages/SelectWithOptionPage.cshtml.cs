@@ -21,10 +21,12 @@ namespace AynısıEvde.Pages
         public IList<ingredient_list> ing_list { get; set; } = default!;
         [BindProperty(SupportsGet = true)]
         public int? Selected { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public String? SelectedName { get; set; }
         public IList<recipe_list> query { get; set; } = default!;
         public async Task OnGetAsync()
         {
-            
+            SelectedName=SelectedName ?? "";
             Recipe_inglist = await _context.recipe_Ingredient_List.ToListAsync();
             ing_list = await _context.malzemeler.ToListAsync();
             if (Selected.HasValue && Selected > 0)
@@ -35,11 +37,11 @@ namespace AynısıEvde.Pages
                     .Select(ri => ri.recipe_id);
 
                 // Tarif idleri listesinin hangileri varsa onları listele
-                Recipe_list = await _context.recipes_table.Where(r => matchingRecipeIds.Contains(r.recipe_id)).ToListAsync();
+                Recipe_list = await _context.recipes_table.Where(r => (matchingRecipeIds.Contains(r.recipe_id) )).Where(e=> e.recipe_name.ToUpper().Contains(SelectedName.ToUpper())).ToListAsync();
             }
             else
             {
-                Recipe_list = await _context.recipes_table.ToListAsync();
+                Recipe_list = await _context.recipes_table.Where(e => e.recipe_name.ToUpper().Contains(SelectedName.ToUpper())).ToListAsync();
             }
         }
     }

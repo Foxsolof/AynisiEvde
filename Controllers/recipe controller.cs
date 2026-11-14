@@ -7,7 +7,7 @@ namespace AynısıEvde.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RecipesController : ControllerBase
+    public class RecipesController : Controller
     {
         private readonly testdatabase access_point;
         public RecipesController(testdatabase context)

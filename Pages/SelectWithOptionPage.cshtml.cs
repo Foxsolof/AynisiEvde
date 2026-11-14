@@ -24,6 +24,7 @@ namespace AynısıEvde.Pages
         [BindProperty(SupportsGet = true)]
         public String? SelectedName { get; set; }
         public IList<recipe_list> query { get; set; } = default!;
+        //sayfa açıldığında ve güncellendiğinde?
         public async Task OnGetAsync()
         {
             SelectedName=SelectedName ?? "";

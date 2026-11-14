@@ -41,7 +41,7 @@ namespace AynısıEvde.Pages
             emote = emote + " ";
             //Name = "Doner";
             Name = rec.recipe_name;
-            User = "Ali Efe SONMEZ!";
+            User = "username";
             //Ingredients = "10 tane mavi kola \n 20 tane meybuz\n 1 döner ustası\nBir tutam da bilim";
             if (ing.Count > 0)
             {

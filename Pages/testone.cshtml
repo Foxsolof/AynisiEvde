@@ -1,0 +1,22 @@
+﻿@page
+@model AynısıEvde.Pages.testoneModel
+@{
+}
+<body class="main-body1">
+	
+	<div class="main-container1">
+		<h2>burası model.tarif listesini yazar</h2>
+		@foreach(var x in @Model.tarif_listesi){
+			<div>@x.recipe_name</div>
+		}
+		<div>
+			<form method="get" asp-page="./testone">
+				<div class="input-group">
+					<input type="number" name="id" class="form-control" placeholder="girdi alanı?" />
+					<button type="submit" class="btn btn-primary">Git</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+</body>

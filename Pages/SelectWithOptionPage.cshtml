@@ -59,7 +59,19 @@
                     {
 
                         var videoUrl = item.recipe_video;
-                        var videoId = videoUrl.Split("/embed/")[1].Split("?")[0].Split("&")[0];
+                        string videoId="";
+                        try
+                        {
+                            videoId = videoUrl.Split("/embed/")[1].Split("?")[0].Split("&")[0];
+                        }
+                        catch
+                        {
+                            
+                        }
+                        finally
+                        {
+                            
+                        };
                         var maxResUrl = $"https://img.youtube.com/vi/{videoId}/maxresdefault.jpg";
                         var hqUrl = $"https://img.youtube.com/vi/{videoId}/hqdefault.jpg";
 

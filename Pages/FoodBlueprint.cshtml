@@ -4,39 +4,27 @@
 	
 }
 <style>
-    body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('/assets/Bg.png');
-        background-repeat: repeat;
-        background-size: auto;
-        background-position: center;
-        background-attachment: fixed;
-        color: rgb(121, 67, 222);
-    }
-
-    
-    html[data-bs-theme="light"] body {
-        background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('/assets/Bg.png');
-        background-repeat: repeat;
-        background-size: auto;
-        --metinco : rgb(121, 67, 222);
-    }
-
-    
-    html[data-bs-theme="dark"] body {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/Bg.png');
-        background-repeat: repeat;
-        background-size: auto;
-        --metinco : rgb(255,255,255);
-    }
+ 
     .dinamikMetin{
         color:var(--metinco);
+        border: solid 2px black;
+        border-radius:3px;
+        width:fit-content;
+        padding-left:20px;
+        padding-right:20px;
+        margin: auto;
+        margin-top:20px;
+        margin-bottom:20px;
+        background-color: lightgray;
     }
     .dinamikKutu{
         border: solid var(--metinco) 5px;
+
     }
 </style>
-<body >
-    <h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:60px; text-align:center;margin-top:100px">@Model.Name</h1>
+<body class="main-body1">
+    <div class="main-container1">
+    <h1 class="dinamikMetin" style="font-family:Arial,'Arial Rounded MT';font-size:60px; text-align:center;margin-top:100px">@Model.Name</h1>
     <div class="video-container" style="display: flex; justify-content: center; width: 100%; margin: 20px 0;margin-top:100px">
     <iframe width="560" 
             height="315" 
@@ -60,4 +48,5 @@
         <h1 class="dinamikMetin" style="white-space: pre-line;font-family:Arial,'Arial Rounded MT';font-size:25px;margin-bottom:30px">@Model.description<h1\>
 </div>
 </div>
+            </div>
     </body>

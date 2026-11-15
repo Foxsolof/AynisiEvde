@@ -42,11 +42,12 @@ body {
 }
 .main-container1 {
     align-self: center;
-    width: 700px;
-    height: 1000px;
+    width: 900px;
+    height: fit-content;
     margin: auto;
     margin-bottom: 100px;
     margin-top: 50px;
+    padding-bottom: 10px;
     text-align: center;
     border: solid green 5px;
     border-radius: 20px;
@@ -93,11 +94,12 @@ html[data-bs-theme="dark"] .div-background-one {
 
 html[data-bs-theme="light"] .main-container1 {
     align-self: center;
-    width: 700px;
-    height: 1000px;
+    width: 900px;
+    height: fit-content;
     margin: auto;
     margin-bottom: 100px;
     margin-top: 50px;
+    padding-bottom: 10px;
     text-align: center;
     border: solid green 5px;
     border-radius: 20px;
@@ -107,15 +109,16 @@ html[data-bs-theme="light"] .main-container1 {
 
 html[data-bs-theme="dark"] .main-container1 {
     align-self: center;
-    width: 700px;
-    height: 1000px;
+    width: 900px;
+    height: fit-content;
     margin: auto;
     margin-bottom: 100px;
     margin-top: 50px;
+    padding-bottom:10px;
     text-align: center;
-    border: solid purple 5px;
+    border: solid rgb(99, 141, 138) 5px;
     border-radius: 20px;
-    background: rgb(0, 0, 0);
+    background: rgb(29, 28, 28);
     position: relative;
 }
 
